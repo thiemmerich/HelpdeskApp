@@ -10,6 +10,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/css/skeleton.css">
+        <script src="/js/main.js"></script>
     </head>
     <body style="background-color: #f4f7ff">
         <form>
@@ -22,7 +23,7 @@ and open the template in the editor.
                     </div>
                     <div class="row">
                         <label for="exampleEmailInput">Your email</label>
-                        <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
+                        <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="emailInput">
                     </div>
                     <div class="row">
                         <label for="companyInput">Empresa</label>
@@ -35,17 +36,17 @@ and open the template in the editor.
                         </div>
                         <div class="six columns">
                             <label for="exampleRecipientInput">Razão do contato</label>
-                            <select class="u-full-width" id="exampleRecipientInput">
+                            <select class="u-full-width" id="recipientInput">
                                 <option value="Option 1">Opções</option>
-                                <option value="Option 2">Problema</option>
-                                <option value="Option 3">Melhoria</option>
+                                <option value="Problema">Problema</option>
+                                <option value="Melhoria">Melhoria</option>
                             </select>
                         </div>
                     </div>
                     <div class="row">
                         <label for="exampleMessage">Mensagem</label>
                         <textarea class="u-full-width" placeholder="Digite aqui" id="exampleMessage"></textarea>
-                        <input class="button-primary" type="submit" value="Submit">
+                        <input class="button-primary" type="submit" value="Enviar" onclick="sendData()">
                     </div>
                 </div>
             </div>

@@ -12,8 +12,8 @@ package br.com.emmerich.HelpdeskApp.bean;
 public class Chamado {
 
     private String contact;
-    private String company;
     private String email;
+    private String company;
     private String equipment;
     private String type;
     private String description;
@@ -78,4 +78,15 @@ public class Chamado {
         this.description = description;
     }
 
+    @Override
+    public String toString() {
+        return "Nome: " + this.contact + "\n"
+                + "Empresa: " + this.company + "\n"
+                + "Email: " + this.email + "\n"
+                + "Equipamento: " + this.equipment + "\n"
+                + "Tipo: " + this.type + "\n"
+                + "Mensagem: " + this.description;
+    }
+
+    
 }
