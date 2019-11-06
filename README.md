@@ -1,0 +1,2 @@
+# HelpdeskApp
+A Single static HTML and Skeleton Responsive CSS page to send information using Javascript to a Spring Boot Rest API;
