@@ -62,9 +62,8 @@ public class SendEmail {
                 //Remetente
 
                 //Address[] toUser = InternetAddress.parse(usuario.getEmail());
-                //Address[] toUser = InternetAddress.parse("thiago.emmerich@hotmail.com");
                 
-                message.setRecipient(Message.RecipientType.TO, new InternetAddress("dev2@brametec.com.br"));
+                message.setRecipient(Message.RecipientType.TO, new InternetAddress("email to"));
                  message.setSubject("Chamado - HelpDesk");
                  message.setText(chamado.toString()); // as "text/plain"
                  message.setSentDate(new Date());
