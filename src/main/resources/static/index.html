@@ -1,50 +1,82 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Helpdesk</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/css/skeleton.css">
-        <script src="/js/main.js"></script>
-    </head>
-    <body style="background-color: #f4f7ff">
-        <form>
-            <div class="container">
-                <div class="twelve columns">
-                    <img src="https://logos.textgiraffe.com/logos/logo-name/16330406-designstyle-cloudy-m.png"/>
-                    <div class="row">
-                        <label for="nameInput">Nome</label>
-                        <input class="u-full-width" type="text" placeholder="Thiago Emmerich" id="nameInput">
+
+<head>
+    <title>Helpdesk</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <script src="/js/main.js"></script>
+</head>
+
+<body style="background-color: #f4f7ff">
+    <form>
+        <div class="container">
+            <div class="twelve columns">
+                <img src="https://logos.textgiraffe.com/logos/logo-name/16330406-designstyle-cloudy-m.png" />
+                <div class="row">
+                    <label for="nameInput">Nome</label>
+                    <input class="u-full-width" type="text" placeholder="Thiago Emmerich" id="nameInput">
+                </div>
+                <div class="row">
+                    <label for="exampleEmailInput">Email</label>
+                    <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="emailInput">
+                </div>
+                <div class="row">
+                    <label for="companyInput">Empresa</label>
+                    <input class="u-full-width" type="text" placeholder="Emmerich" id="companyInput">
+                </div>
+                <div class="row">
+                    <div class="six columns">
+                        <label for="equipmentInput">Equipamento</label>
+                        <input class="u-full-width" type="text" id="equipmentInput">
                     </div>
-                    <div class="row">
-                        <label for="exampleEmailInput">Email</label>
-                        <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="emailInput">
-                    </div>
-                    <div class="row">
-                        <label for="companyInput">Empresa</label>
-                        <input class="u-full-width" type="text" placeholder="Emmerich" id="companyInput">
-                    </div>
-                    <div class="row">
-                        <div class="six columns">
-                            <label for="equipmentInput">Equipamento</label>
-                            <input class="u-full-width" type="text" id="equipmentInput">
-                        </div>
-                        <div class="six columns">
-                            <label for="exampleRecipientInput">Razão do contato</label>
-                            <select class="u-full-width" id="recipientInput">
-                                <option value="Option 1">Opções</option>
-                                <option value="Problema">Problema</option>
-                                <option value="Melhoria">Melhoria</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label for="exampleMessage">Mensagem</label>
-                        <textarea class="u-full-width" placeholder="Digite aqui" id="exampleMessage"></textarea>
-                        <input class="button-primary" type="submit" value="Enviar" onclick="sendData()">
+                    <div class="six columns">
+                        <label for="exampleRecipientInput">Razão do contato</label>
+                        <select class="u-full-width" id="recipientInput">
+                            <option value="Option 1">Opções</option>
+                            <option value="Problema">Problema</option>
+                            <option value="Melhoria">Melhoria</option>
+                        </select>
                     </div>
                 </div>
+                <div class="row">
+                    <label for="exampleMessage">Mensagem</label>
+                    <textarea class="u-full-width" placeholder="Digite aqui" id="exampleMessage"></textarea>
+                    <input class="button-primary" type="submit" value="Enviar" onclick="sendData()">
+                </div>
             </div>
-        </form>
-    </body>
+        </div>
+    </form>
+</body>
+
+<!-- UNUSED POPUP DIV
+    <div id="successDialogMessage" class="twelve columns" 
+                style="display: none; 
+                        border-radius: 5px;
+                        border: 2px solid #73AD21;
+                        background-color: lightgreen;"
+                >
+                    <div class="ten columns">
+                        <h4>Mensagem enviada com sucesso!</h4>
+                    </div>
+                    <div class="two columns">
+                        <input class="button-primary" type="button" value="Fechar" onclick="closeDialog()">
+                    </div>
+                </div>
+                <div id="failDialogMessage" class="twelve columns" 
+                style="display: none; 
+                        border-radius: 5px;
+                        border: 2px solid rgb(173, 33, 63);
+                        background-color: rgb(238, 144, 144);"
+                >
+                    <div class="ten columns">
+                        <h4>Falha ao enviar mensagem!</h4>
+                    </div>
+                    <div class="two columns">
+                        <input class="button-primary" type="button" value="Fechar" onclick="closeDialog()">
+                    </div>
+                </div>
+-->
+
 </html>

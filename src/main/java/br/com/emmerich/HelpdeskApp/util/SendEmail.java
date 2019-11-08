@@ -24,8 +24,9 @@ import javax.mail.internet.MimeMessage;
  */
 public class SendEmail {
 
-    private final String emailUser = "no.reply.emmerich@gmail.com";
-    private final String emailPasswd = "@Cachorro1@";
+    private final String emailUser = "email";
+    private final String toEmail = "tomail";
+    private final String emailPasswd = "senha";
 
     public boolean send(Chamado chamado) throws UnsupportedEncodingException {
 
@@ -64,7 +65,7 @@ public class SendEmail {
                 //Address[] toUser = InternetAddress.parse(usuario.getEmail());
                 //Address[] toUser = InternetAddress.parse("thiago.emmerich@hotmail.com");
                 
-                message.setRecipient(Message.RecipientType.TO, new InternetAddress("dev2@brametec.com.br"));
+                message.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
                  message.setSubject("Chamado - HelpDesk");
                  message.setText(chamado.toString()); // as "text/plain"
                  message.setSentDate(new Date());
@@ -76,10 +77,11 @@ public class SendEmail {
                 System.out.println("Feito!!!");
 
             } catch (MessagingException e) {
-                throw new RuntimeException(e);
+                System.out.println(e.toString());
+                return false;
             }
-            return true;
+            //return true;
         }
-        return false;
+        return true;
     }
 }

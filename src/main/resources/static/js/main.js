@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-
 function sendData() {
     var name = document.getElementById("nameInput").value;
     var email = document.getElementById("emailInput").value;
@@ -13,33 +12,39 @@ function sendData() {
     var op = document.getElementById("recipientInput").value;
     var msg = document.getElementById("exampleMessage").value;
 
-    /*alert("NOME: " + name);
-    alert("EMAIL: " + email);
-    alert("EMPRESA: " + company);
-    alert("EQUIPAMENTO: " + equip);
-    alert("TIPO: " + op);
-    alert("MENSAGEM: " + msg);*/
+    var httpRequest = new XMLHttpRequest();
 
-    var xhr = new XMLHttpRequest();
     var url = "/enviar";
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var json = JSON.parse(xhr.responseText);
-            //console.log(json.email + ", " + json.password);
+    httpRequest.open("POST", url, /* async = */ false);
+    httpRequest.setRequestHeader("Content-Type", "application/json");
+
+    httpRequest.onreadystatechange = function () {
+        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+            alert(JSON.parse(httpRequest.responseText));
         }
     };
     var data = JSON.stringify(
-            {"contact":name,
-                "email": email,
-              "company": company,
-              "equipment":equip,
-              "type":op,
-              "description":msg
-          });
-    xhr.send(data);
-    
-    //alert(data);
+        {
+            "contact": name,
+            "email": email,
+            "company": company,
+            "equipment": equip,
+            "type": op,
+            "description": msg
+        });
+    httpRequest.send(data);
+
+    if (httpRequest.status === 201) {
+        onSuccessPopup();
+    } else {
+        onFailedPopup();
+    }
+}
+
+function onSuccessPopup() {
+    alert("Chamado enviado com sucesso!");
+}
+
+function onFailedPopup() {
+    alert("Falha ao enviar chamado!");
 }
