@@ -7,6 +7,9 @@ package br.com.emmerich.HelpdeskApp.service;
 
 import br.com.emmerich.HelpdeskApp.bean.Chamado;
 import br.com.emmerich.HelpdeskApp.util.SendEmail;
+
+import java.io.UnsupportedEncodingException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,7 +29,12 @@ public class Service {
     public ResponseEntity<Chamado> enviar(@RequestBody Chamado chamado) {
         System.out.println(chamado.toString());
 
-        boolean result = sendEmail.send(chamado);
+        boolean result = false;
+        try {
+            result = sendEmail.send(chamado);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
         if (result) {
             return ResponseEntity.status(HttpStatus.CREATED).body(chamado);
