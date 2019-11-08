@@ -24,56 +24,57 @@ import javax.mail.internet.MimeMessage;
  */
 public class SendEmail {
 
-    private final String emailUser = "xxx@email.com";
-    private final String emailPasswd = "passwd";
+    private final String emailUser = "email";
+    private final String emailPasswd = "senha";
 
     public boolean send(Chamado chamado) throws UnsupportedEncodingException {
 
         if (chamado != null) {
 
-            /*Properties props = new Properties();
+            Properties props = new Properties();
+            /**
+             * Parâmetros de conexão com servidor Gmail
+             */
             props.put("mail.smtp.host", "smtp.gmail.com");
-             props.put("mail.smtp.socketFactory.port", "465");
-             props.put("mail.smtp.socketFactory.class",
-             "javax.net.ssl.SSLSocketFactory");
-             props.put("mail.smtp.auth", "true");
-             props.put("mail.smtp.port", "465");*/
-            
-            String smtpHostServer = "smtp.example.com";
-            String emailID = "email_me@example.com";
-            Properties props = System.getProperties();
+            props.put("mail.smtp.socketFactory.port", "465");
+            props.put("mail.smtp.socketFactory.class",
+                    "javax.net.ssl.SSLSocketFactory");
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.port", "465");
 
-            props.put("mail.smtp.host", smtpHostServer);
+            Session session = Session.getDefaultInstance(props,
+                    new javax.mail.Authenticator() {
+                        @Override
+                        protected PasswordAuthentication getPasswordAuthentication() {
+                            return new PasswordAuthentication(emailUser, emailPasswd);
+                        }
+                    });
 
-            Session session = Session.getInstance(props, null);
+            /**
+             * Ativa Debug para sessão
+             */
             session.setDebug(true);
 
             try {
 
-                Address[] toUser = InternetAddress.parse("dev2@brametec.com.br");
+                Message message = new MimeMessage(session);
+                message.setFrom(new InternetAddress(emailUser));
+                //Remetente
 
-                MimeMessage msg = new MimeMessage(session);
-                //set message headers
-                msg.addHeader("Content-type", "text/HTML; charset=UTF-8");
-                msg.addHeader("format", "flowed");
-                msg.addHeader("Content-Transfer-Encoding", "8bit");
-
-                msg.setFrom(new InternetAddress("no_reply@example.com", "NoReply-JD"));
-                msg.setReplyTo(InternetAddress.parse("no_reply@example.com", false));
-                msg.setSubject("Chamado - HelpDesk", "UTF-8");
-                msg.setText(chamado.toString(), "UTF-8");
-                msg.setSentDate(new Date());
-                msg.setRecipients(Message.RecipientType.TO, toUser);
-                System.out.println("Message is ready");
-                Transport.send(msg);
-
-                /*Message message = new MimeMessage(session);
-                 message.setFrom(new InternetAddress("admin@test.com"));
-                 message.setRecipient(Message.RecipientType.TO, new InternetAddress("a@b.com"));
+                //Address[] toUser = InternetAddress.parse(usuario.getEmail());
+                //Address[] toUser = InternetAddress.parse("thiago.emmerich@hotmail.com");
+                
+                message.setRecipient(Message.RecipientType.TO, new InternetAddress("dev2@brametec.com.br"));
                  message.setSubject("Chamado - HelpDesk");
                  message.setText(chamado.toString()); // as "text/plain"
                  message.setSentDate(new Date());
-                 Transport.send(message);*/
+                /**
+                 * Método para enviar a mensagem criada
+                 */
+                Transport.send(message);
+
+                System.out.println("Feito!!!");
+
             } catch (MessagingException e) {
                 throw new RuntimeException(e);
             }
