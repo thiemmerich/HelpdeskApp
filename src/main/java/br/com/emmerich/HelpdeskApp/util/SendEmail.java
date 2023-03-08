@@ -24,9 +24,9 @@ import javax.mail.internet.MimeMessage;
  */
 public class SendEmail {
 
-    private final String emailUser = "no.reply.emmerich@gmail.com";
-    private final String toEmail = "thiagoff.tce@gmail.com";
-    private final String emailPasswd = "@Cachorro1@";
+    private final String emailUser = "xxxxxxxxxxx@gmail.com";
+    private final String toEmail = "xxxxxxxxxx@gmail.com";
+    private final String emailPasswd = "xxxxxxxxxx";
 
     public boolean send(Chamado chamado) throws UnsupportedEncodingException {
 
